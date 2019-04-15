@@ -10,4 +10,4 @@ Yarn serve
 Lub
 
 Npm install 
-Npm serve 
+Npm run serve 
