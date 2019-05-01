@@ -1,6 +1,5 @@
-# zadanie_rekrutacyjne
-
-zadanie dla STXNEXT
+# Vue_books
+aplikacja korzystająca z api google books, służąca do wyszukiwania książek
 
 # Uruchamianie:
 
