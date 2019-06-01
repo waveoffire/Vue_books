@@ -47,7 +47,6 @@
                 class="btn btn-info"
                 @click="getBooks(false)"
               >Szukaj</button>
-
             </div>
           </div>
           <div class="row">
@@ -65,7 +64,6 @@
               class="bookphoto"
             >
             <div>
-
               Tytuł: {{book.volumeInfo.title}}
             </div>
             <div
@@ -80,7 +78,6 @@
     </div>
   </div>
 </template>
-
 <script>
 import { required } from "vuelidate/lib/validators";
 export default {
@@ -160,7 +157,6 @@ export default {
   }
 };
 </script>
-
 <style>
 body {
   background-color: rgba(223, 223, 223, 0.74) !important;
@@ -175,7 +171,6 @@ body {
   background-position: right top;
   background-attachment: fixed;
 }
-
 .onebook {
   width: 25%;
   display: inline-table;
