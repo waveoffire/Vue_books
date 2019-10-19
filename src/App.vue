@@ -5,72 +5,50 @@
       style="  min-height: 97vh;
   margin-top: 20px;"
     >
-      <div
-        class="card-header"
-        style="background-color:rgba(0, 0, 0, 0.1);"
-      >
-        <h3 class="card-title">Wyszukiwarka książek
-        </h3>
+      <div class="card-header" style="background-color:rgba(0, 0, 0, 0.1);">
+        <h3 class="card-title">Wyszukiwarka książek</h3>
       </div>
-      <div
-        class="card-body p-3"
-        style="background-color:rgba(0, 0, 0, 0.03);"
-      >
-        <div
-          class="table-responsive mailbox-messages"
-          style="overflow:hidden"
-        >
-
+      <div class="card-body p-3" style="background-color:rgba(0, 0, 0, 0.03);">
+        <div class="table-responsive mailbox-messages" style="overflow:hidden">
           <div class="row">
-            <div class="col-5">
+            <div class="col-8 col-sm-8 col-md-6 col-xl-5">
               <div class="form-group">
                 <label
-                  :class="{'text-danger': $v.title.$anyError}"
+                  :class="{ 'text-danger': $v.title.$anyError }"
                   for="title"
-                >Tytuł</label>
+                  >Tytuł</label
+                >
                 <input
                   type="text"
-                  :class="{'is-invalid': $v.title.$anyError}"
+                  :class="{ 'is-invalid': $v.title.$anyError }"
                   class="form-control "
                   id="title"
                   placeholder="Wprowadź tytuł"
                   v-model.trim="$v.title.$model"
+                />
+                <small class="text-danger" v-if="$v.title.$anyError"
+                  >Wymagane</small
                 >
-                <small
-                  class="text-danger"
-                  v-if="$v.title.$anyError"
-                >Wymagane</small>
               </div>
             </div>
-            <div class="col-2"><button
+            <div class="col-3 col-sm-3 col-md-3 col-xl-2">
+              <button
                 style="margin-top:32px"
                 class="btn btn-info"
                 @click="getBooks(false)"
-              >Szukaj</button>
+              >
+                Szukaj
+              </button>
             </div>
           </div>
           <div class="row">
-            <div class="col-4">
-              Znalezionych: {{totalitems}}
-            </div>
+            <div class="col-12">Znalezionych: {{ totalitems }}</div>
           </div>
-          <div
-            v-for="book in books"
-            :key="book.id"
-            class="onebook"
-          >
-            <img
-              :src="ifimage(book.volumeInfo) "
-              class="bookphoto"
-            >
-            <div>
-              Tytuł: {{book.volumeInfo.title}}
-            </div>
-            <div
-              class="description"
-              v-if="book.volumeInfo.description"
-            >
-              Opis: {{book.volumeInfo.description}}
+          <div v-for="book in books" :key="book.id" class="onebook">
+            <img :src="ifimage(book.volumeInfo)" class="bookphoto" />
+            <div>Tytuł: {{ book.volumeInfo.title }}</div>
+            <div class="description" v-if="book.volumeInfo.description">
+              Opis: {{ book.volumeInfo.description }}
             </div>
           </div>
         </div>
@@ -95,14 +73,11 @@ export default {
       if (this.$v.$invalid == true) {
         this.$v.$touch();
       } else {
-        let query = "volumes?q=";
         if (more == false) {
           this.load = true;
           this.skip = 0;
         }
-        query += "intitle:" + this.title;
-        query += "&maxResults=40";
-        query += "&startIndex=" + this.skip;
+        let query = `volumes?q=intitle:${this.title}&maxResults=40&startIndex=${this.skip}`;
         this.$http.get(query).then(response => {
           this.totalitems = response.body.totalItems;
           if (more == true) {
@@ -190,5 +165,10 @@ body {
   overflow: hidden;
   text-overflow: ellipsis;
   max-height: 5em;
+}
+@media only screen and (max-width: 800px) {
+  .onebook {
+    width: 100%;
+  }
 }
 </style>

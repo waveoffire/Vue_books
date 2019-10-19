@@ -8,7 +8,7 @@ let config = {
   current: <IConfig>{},
   dev: <IConfig>{
     api: "https://www.googleapis.com/books/v1",
-    title: "Zadanie rekrutacyjne - Piotr Smilgin"
+    title: "Books Searcher"
   }
 };
 
