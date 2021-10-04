@@ -1,4 +1,4 @@
-LIVE: https://books.smilgin.co.pl/
+LIVE: https://books.smilgin.eu/
 # Vue_books
 aplikacja korzystająca z api google books, służąca do wyszukiwania książek
 
